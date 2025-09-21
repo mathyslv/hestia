@@ -1,0 +1,13 @@
+[package]
+name = "hestia-tui"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Terminal user interface for Hestia EDR"
+
+[dependencies]
+anyhow.workspace = true
+crossterm = "0.29.0"
+ratatui = "0.29.0"

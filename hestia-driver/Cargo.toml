@@ -1,0 +1,29 @@
+[package]
+name = "hestia-driver"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+test = false
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[package.metadata.wdk.driver-model]
+kmdf-version-major = 1
+target-kmdf-version-minor = 33
+driver-type = "KMDF"
+
+[dependencies]
+wdk = "0.3.1"
+wdk-alloc = "0.3.1"
+wdk-panic = "0.3.1"
+wdk-sys = "0.4.0"
+windows-strings = { version = "0.5", default-features = false }
+
+[build-dependencies]
+wdk-build = "0.4.0"

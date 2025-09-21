@@ -1,0 +1,13 @@
+[package]
+name = "hestia-gui"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Graphical user interface for Hestia EDR"
+
+[dependencies]
+eframe = { version = "0.32", default-features = true }
+log.workspace = true
+env_logger.workspace = true

@@ -1,0 +1,55 @@
+;===================================================================
+; Hestia-driver
+; Copyright (c) Microsoft Corporation
+;===================================================================
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %ProviderString%
+PnpLockDown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+hestia_driver.sys = 1,,
+
+; ================= Install section =================
+
+[Manufacturer]
+%StdMfg%=Standard,NT$ARCH$.10.0...16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%DeviceDesc%=Hestia-driverDevice, root\HESTIA-DRIVER_HW_ID
+
+[Hestia-driverDevice.NT$ARCH$]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+hestia_driver.sys
+
+; ================= Service installation =================
+[Hestia-driverDevice.NT$ARCH$.Services]
+AddService = Hestia-driverService, %SPSVCINST_ASSOCSERVICE%, Hestia-driver_Service_Install
+
+[Hestia-driver_Service_Install]
+DisplayName    = %ServiceDesc%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START 
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\hestia_driver.sys
+
+; ================= Strings =================
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ProviderString         = "TODO-Set-Provider"
+StdMfg                 = "(Standard system devices)"
+DiskId1                = "Hestia-driver Installation Disk #1"
+DeviceDesc             = "Hestia-driver Device"
+ServiceDesc            = "Hestia-driver Service"
+ClassName              = "Hestia-driver Device"

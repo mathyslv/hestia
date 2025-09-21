@@ -1,0 +1,20 @@
+[package]
+name = "hestia-engine"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Detection engine for Hestia EDR - analyzes events and detects threats"
+
+[dependencies]
+anyhow.workspace = true
+log.workspace = true
+env_logger.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows-service = "0.6"
+
+[[bin]]
+name = "agent"
+path = "src/main.rs"
