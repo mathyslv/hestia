@@ -9,8 +9,10 @@ description = "Detection engine for Hestia EDR - analyzes events and detects thr
 
 [dependencies]
 anyhow.workspace = true
-log.workspace = true
-env_logger.workspace = true
+clap = { version = "4.5", features = ["derive"] }
+tracing = "0.1"
+tracing-subscriber = "0.3"
+tracing-etw = "0.2"
 
 [target.'cfg(windows)'.dependencies]
 windows-service = "0.6"
